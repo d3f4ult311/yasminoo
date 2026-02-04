@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for yasmine</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #d63384;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        #yes {
+            background-color: #28a745;
+            color: white;
+        }
+        #no {
+            background-color: #dc3545;
+            color: white;
+            position: relative;
+        }
+        #message {
+            display: none;
+            font-size: 24px;
+            color: #d63384;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="question">
+        <h1>do you love me!</h1>
+        <button id="yes">نعم</button>
+        <button id="no">لا</button>
+    </div>
+    <div id="message">! ❤️i love you moree sanfortiii! ❤️</div>
+
+    <script>
+        const noButton = document.getElementById('no');
+        const yesButton = document.getElementById('yes');
+        const question = document.getElementById('question');
+        const message = document.getElementById('message');
+
+        // تحريك زر "لا" عشوائياً عند التمرير أو النقر
+        noButton.addEventListener('mouseover', moveButton);
+        noButton.addEventListener('click', moveButton);
+
+        function moveButton() {
+            const container = document.querySelector('.container');
+            const containerRect = container.getBoundingClientRect();
+            const buttonRect = noButton.getBoundingClientRect();
+
+            // حساب موقع عشوائي داخل الحاوية
+            const maxX = containerRect.width - buttonRect.width;
+            const maxY = containerRect.height - buttonRect.height;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            noButton.style.position = 'absolute';
+            noButton.style.left = randomX + 'px';
+            noButton.style.top = randomY + 'px';
+        }
+
+        // عند النقر على "نعم"، إظهار الرسالة وإخفاء السؤال
+        yesButton.addEventListener('click', function() {
+            question.style.display = 'none';
+            message.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
